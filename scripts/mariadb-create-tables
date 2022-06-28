@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ${HOME}/sigstore-local/src/scripts
+sudo ./createdb.sh

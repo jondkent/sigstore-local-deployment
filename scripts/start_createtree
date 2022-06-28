@@ -1,0 +1,3 @@
+#!/bin/bash
+
+createtree --admin_server localhost:8091 | tee $HOME/sigstore-local/trillian.log_id

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Start Trillian log Signer"
+
+setsid nohup trillian_log_signer --logtostderr --force_master --http_endpoint=localhost:8190 -rpc_endpoint=localhost:8191 | systemd-cat &

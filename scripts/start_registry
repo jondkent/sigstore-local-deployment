@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Start Registry server"
+
+setsid nohup registry | systemd-cat &

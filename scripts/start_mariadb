@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Starting MariaDB"
+systemctl start mariadb && sudo mysql_secure_installation
+
