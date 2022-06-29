@@ -1,0 +1,15 @@
+#!/bin/bash
+
+read -p "Path to cosign private key: " keypriv
+read -p "Path to cosign public key: " keypub
+read -p "Uploaded image name (e.g. rekor-cli-e3df3bc7cfcbe584a2639931193267e9@sha256:4d8959ead80b7c7fe6037e126166720b04a6f5e5d6ced88fa5f6fa716ea3eae3 ): " image
+
+echo "Sign the container previously uploaded"
+
+cosign sign --key ${keypriv} localhost:1338/demo/${image}
+
+echo "Validate the signature"
+
+cosign verify --key ${keypub} localhost:1338/demo/${image}
+
+
