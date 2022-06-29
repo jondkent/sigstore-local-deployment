@@ -52,7 +52,7 @@ registry:
 
 .PHONY: ##rekor-cli-test-image
 rekor-cli-test-image:
-	bash test/test-image-rekorcli
+	bash tests/test-image-rekorcli
 
 .PHONY: ##create-cosign-sig
 create-cosign-sig:
@@ -89,9 +89,9 @@ start-rekor-server:
 
 .PHONY: ##test-cosign
 test-cosign:
-	bash test/simple-image-sign
+	bash tests/simple-image-sign
 
 .PHONY: ##test-rekor
 test-rekor:
-	bash test/test-rekor
+	bash tests/test-rekor
 
