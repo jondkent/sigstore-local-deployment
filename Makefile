@@ -9,11 +9,16 @@ help: ##help
 	@fgrep -h "##" $(MAKEFILE_LIST) |grep -v grep | sed -e 's/##//' | sed -e 's/^.PHONY: //'|grep -v help
 	@echo "---------------------------------------------------------"
 	@echo "Ensure ${HOME}/go/bin is in your search path"
-	@echo "Note quickstart target does not install packages, run install targets before using quickstart target"
-	@echo "Note install-packages target is for RHEL/Fedora only"
+	@echo "*Note* quickstart target does not install packages, run install targets before using quickstart target"
+	@echo "*Note* install-packages target is for RHEL/Fedora only"
+	@echo "Once deployed run make post-deploy-tests to validate state"
+	@echo "Refer to journalctl for log output from targets"
 
 .PHONY: ##quickstart
 quickstart: registry clone-rekor rekor-cli-test-image create-cosign-sig start-mariadb secure-mariadb create-db-tables trillian-log-server trillian-log-signer createtree start-rekor-server
+
+.PHONY: ##post-deploy-tests
+post-deploy-tests: test-cosign test-rekor
 
 ,PHONY: ##install-packages
 install-packages:
@@ -82,4 +87,11 @@ createtree:
 start-rekor-server:
 	bash scripts/start_rekor_server
 
+.PHONY: ##test-cosign
+test-cosign:
+	bash test/simple-image-sign
+
+.PHONY: ##test-rekor
+test-rekor:
+	bash test/test-rekor
 
