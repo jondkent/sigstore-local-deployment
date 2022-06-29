@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "Building rekor-cli image and uploading to repository"
-cd ${HOME}/sigstore-local/src/cmd
-KO_DOCKER_REPO=localhost:1338/demo ko publish ./rekor-cli
