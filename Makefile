@@ -13,8 +13,7 @@ help: ##help
 	@echo "Note install-packages target is for RHEL/Fedora only"
 
 .PHONY: ##quickstart
-quickstart:
-	registry clone-rekor rekor-cli-test-image create-cosign-sig start-mariadb secure-mariadb trillian-log-server trillian-log-signer createtree start-rekor-server
+quickstart: registry clone-rekor rekor-cli-test-image create-cosign-sig start-mariadb secure-mariadb create-db-tables trillian-log-server trillian-log-signer createtree start-rekor-server
 
 ,PHONY: ##install-packages
 install-packages:

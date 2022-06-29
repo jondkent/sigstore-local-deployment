@@ -1,0 +1,15 @@
+#!/bin/bash
+
+read -p "Path to cosign private key: " keypriv
+read -p "Path to cosign public key: " keypub
+read -p "Image name (e.g. rekor-cli-e3df3bc7cfcbe584a2639931193267e9@sha256:4d8959ead80b7c7fe6037e126166720b04a6f5e5d6ced88fa5f6fa716ea3eae3 ): " image
+
+echo "Sign and upload the signature for image"
+
+COSIGN_EXPERIMENTAL=1 cosign sign --key ${keypriv} --rekor-url=http://localhost:3000 localhost:1338/demo/${image}
+
+echo "Verify the container against the OCI attestation and the Rekor record"
+echo "Cosign will check the OCI metadata and rekor. Rekor in-turn, will use Trillian and the MariaDB database to verify the certificate"
+
+COSIGN_EXPERIMENTAL=1 cosign verify --key ${keypub} --rekor-url=http://localhost:3000 localhost:1338/demo/${image}
+
