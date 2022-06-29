@@ -2,4 +2,4 @@
 
 echo "Start Rekor server"
 
-setsid nohup rekor-server serve --trillian_log_server.port=8091 --enable_retrieve_api=false | systemd-cat &
+setsid nohup rekor-server serve --trillian_log_server.port=8091 --enable_retrieve_api=false | systemd-cat --identifier=rekor-server &

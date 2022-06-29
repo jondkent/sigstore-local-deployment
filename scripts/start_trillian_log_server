@@ -2,4 +2,4 @@
 
 echo "Start Trillian log server"
 
-setsid nohup trillian_log_server -http_endpoint=localhost:8090 -rpc_endpoint=localhost:8091 --logtostderr | systemd-cat &
+setsid nohup trillian_log_server -http_endpoint=localhost:8090 -rpc_endpoint=localhost:8091 --logtostderr | systemd-cat --identifier=trillian-log-server &

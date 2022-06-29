@@ -2,4 +2,4 @@
 
 echo "Start Registry server"
 
-setsid nohup registry | systemd-cat &
+setsid nohup registry | systemd-cat--identifier=oci-registry &
