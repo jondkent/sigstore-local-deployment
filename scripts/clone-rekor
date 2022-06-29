@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ -d ${HOME}/sigstore-local/src ]; then 
+        echo "${HOME}/sigstore-local/src exists"
+        read -p "Delete existing directory? (y/n): " reply
+        if [ ${reply} = "y" ]; then
+                rm -rf ${HOME}/sigstore-local/src
+        else
+		echo "Cannot continue...exiting"
+                exit 1
+        fi
+else
+        mkdir -p ${HOME}/sigstore-local/src
+fi
+
+git clone https://github.com/sigstore/rekor.git ${HOME}/sigstore-local/src
+

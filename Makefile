@@ -1,16 +1,15 @@
 # Project details
 PROJECT_NAME = sigstore_local
 
-SHELL = /bin/bash
-TOPDIR = $(shell git rev-parse --show-toplevel)
+SHELL := /bin/bash
+TOPDIR := $(shell git rev-parse --show-toplevel)
 
 help: ##help
 	@echo "Targets:"
 	@fgrep -h "##" $(MAKEFILE_LIST) |grep -v grep | sed -e 's/##//' | sed -e 's/^.PHONY: //'|grep -v help
 	@echo "---------------------------------------------------------"
 	@echo "Ensure ${HOME}/go/bin is in your search path"
-	@echo "Install targets only required if package missing"
-	@echo "Note quickstart target does not install packages"
+	@echo "Note quickstart target does not install packages, run install targets before using quickstart target"
 	@echo "Note install-packages target is for RHEL/Fedora only"
 
 .PHONY: ##quickstart
@@ -41,8 +40,7 @@ install-ko:
 
 .PHONY: ##clone-rekor
 clone-rekor:
-	@mkdir -p ${HOME}/sigstore-local/src
-	git clone https://github.com/sigstore/rekor.git ${HOME}/sigstore-local/src
+	bash scripts/clone-rekor
 
 .PHONY: ##registry
 registry:
