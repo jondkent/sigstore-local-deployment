@@ -1,11 +1,10 @@
 # sigstore-local-deployment
 This automates, and enhances the manual approach to running local Sigstore outlined in [Sigstore the local way](https://github.com/tstromberg/sigstore-the-local-way).  View the README there is gain a deeper insight to the actions being taken here.
 
-This sigstore-local-deployment explores three levels of signing & verification that sigstore makes available, adding new dependencies each time:
+This sigstore-local-deployment provides signing a container using cosign against a local OCI registry and the Rekor transparency log.
 
-1. Signing a container against a local OCI registry
-2. Signing a container against a local OCI registry and the Rekor transparency log
-2. Keyless signing a container against a local OCI registry and the Rekor transparency log
+See `make help` for details of make targets.
+
 
 ## Installation of requirements
 
@@ -20,7 +19,7 @@ To install these run:
 
 ### Go packages
 
-The following are provided are go packages:
+The following are provided are go packages (see `make help` for target details):
 
 * Simple OCI registry
 * cosign
@@ -34,7 +33,7 @@ These can be installed by running:
 * `make install-registry`
 * `make install-cosign`
 * `make install-trillian`
-* `make install-ko
+* `make install-ko`
 
 ## Starting Cosign and dependancies
 
