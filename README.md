@@ -1,5 +1,5 @@
 # sigstore-local-deployment
-This automates, and enhances the manual approach to running local Sigstore outlined in [Sigstore the local way](https://github.com/tstromberg/sigstore-the-local-way).  View the README there is gain a deeper insight to the actions being taken here.
+This automates, and enhances the manual approach to running local Sigstore outlined in [Sigstore the local way](https://github.com/tstromberg/sigstore-the-local-way).
 
 This sigstore-local-deployment provides signing a container using cosign against a local OCI registry and the Rekor transparency log.
 
@@ -11,11 +11,15 @@ See `make help` for details of make targets.
 ### Linux packages
 Currently only RHEL/Fedora is supported.  The following packages are required:
 
-* mariadb-server git go softhsm opensc
+* mariadb-server
+* git
+* golang
+* softhsm
+* opensc
 
 To install these run:
 
-`make install-packages`
+`sudo make install-packages`
 
 ### Go packages
 
