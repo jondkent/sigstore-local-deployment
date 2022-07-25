@@ -1,10 +1,14 @@
 # sigstore-local-deployment
 This automates, and enhances the manual approach to running local Sigstore outlined in [Sigstore the local way](https://github.com/tstromberg/sigstore-the-local-way).
 
-This sigstore-local-deployment provides signing a container using cosign against a local OCI registry and the Rekor transparency log.
+The sigstore-local-deployment provides:
+
+* Container image signing
+* Signing action with cosign
+* Image uploaded to local OCI registry
+* Rekor transparency log to provide a second immutable source of truth to the system
 
 See `make help` for details of make targets.
-
 
 ## Installation of requirements
 
