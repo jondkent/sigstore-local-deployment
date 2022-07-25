@@ -1,4 +1,5 @@
 #!/bin/bash
 
-cd ${HOME}/sigstore-local/src/scripts
+pushd ${HOME}/sigstore-local/src/scripts
 sudo ./createdb.sh
+popd
