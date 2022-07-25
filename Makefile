@@ -84,7 +84,7 @@ createtree:
 	bash scripts/start_createtree
 
 .PHONY: ##create-rekor-image
-start-rekor-server:
+create-rekor-image:
 	bash tests/rekor-image
 
 .PHONY: ##start-rekor-server
