@@ -20,9 +20,13 @@ quickstart: registry create-cosign-sig clone-rekor start-mariadb secure-mariadb 
 .PHONY: ##post-deploy-tests
 post-deploy-tests: test-cosign test-rekor
 
-,PHONY: ##install-packages
-install-packages:
+,PHONY: ##install-packages-linux
+install-packages-linux:
 	sudo dnf install mariadb-server git go softhsm opensc
+
+,PHONY: ##install-packages-mac
+install-packages-mac:
+	brew install mariadb git go softhsm opensc
 
 .PHONY: ##install-registry
 install-registry:
