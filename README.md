@@ -13,7 +13,9 @@ See `make help` for details of make targets.
 ## Installation of requirements
 
 ### Linux packages
-Currently only RHEL/Fedora is supported.  The following packages are required:
+Currently only RHEL/Fedora is fully supported. MacOS support is in progress.
+
+The following packages are required:
 
 * mariadb-server
 * git
@@ -23,7 +25,9 @@ Currently only RHEL/Fedora is supported.  The following packages are required:
 
 To install these run:
 
-`sudo make install-packages`
+`sudo make install-packages-linux`
+or
+`make install-packages-mac`
 
 ### Go packages
 
