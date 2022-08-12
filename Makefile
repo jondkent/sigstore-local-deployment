@@ -10,7 +10,7 @@ help: ##help
 	@echo "---------------------------------------------------------"
 	@echo "Ensure ${HOME}/go/bin is in your search path"
 	@echo "*Note* quickstart target does not install packages, run install targets before using quickstart target"
-	@echo "*Note* install-packages target is for RHEL/Fedora only"
+	@echo "*Note* install-packages-linux target is for RHEL/Fedora only"
 	@echo "Once deployed run make post-deploy-tests to validate state"
 	@echo "Refer to journalctl for log output from targets"
 
