@@ -1,5 +1,12 @@
 #!/bin/bash
 
 echo "Starting MariaDB"
-systemctl start mariadb && sudo mysql_secure_installation
+
+if [ $(uname -s) == "Darwin" ]; then
+	[ -x $(which mysql.server) ] || { echo "Mariadb binary not found"; exit 1; }
+	mysql.server start
+else
+	[ -x $(which mariadb) ] || { echo "Mariadb binary not found"; exit 1; }
+	sudo systemctl start mariadb && sudo mysql_secure_installation
+fi
 

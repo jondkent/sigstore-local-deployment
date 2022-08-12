@@ -1,3 +1,5 @@
 #!/bin/bash
+[ -x $(which createtree) ] || { echo "No createtree binary available"; exit 1; }
 
 createtree --admin_server localhost:8091 | tee $HOME/sigstore-local/trillian.log_id
+

@@ -1,5 +1,11 @@
 #!/bin/bash
+[ -x $(which trillian_log_server) ] || { echo "No trillian_log_server binary available"; exit 1; }
 
 echo "Start Trillian log server"
 
-setsid nohup trillian_log_server -http_endpoint=localhost:8090 -rpc_endpoint=localhost:8091 --logtostderr | systemd-cat --identifier=trillian-log-server &
+if [ $(uname -s) == "Darwin" ]; then
+	setsid nohup trillian_log_server -http_endpoint=localhost:8090 -rpc_endpoint=localhost:8091 --logtostderr &
+else
+	setsid nohup trillian_log_server -http_endpoint=localhost:8090 -rpc_endpoint=localhost:8091 --logtostderr | systemd-cat --identifier=trillian-log-server &
+fi
+

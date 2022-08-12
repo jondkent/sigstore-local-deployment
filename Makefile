@@ -15,7 +15,7 @@ help: ##help
 	@echo "Refer to journalctl for log output from targets"
 
 .PHONY: ##quickstart
-quickstart: registry create-cosign-sig clone-rekor start-mariadb secure-mariadb create-db-tables trillian-log-server trillian-log-signer createtree start-rekor-server create-rekor-image rekor-cli-test-image
+quickstart: registry create-cosign-sig clone-rekor start-mariadb secure-mariadb create-db-tables trillian-log-server trillian-log-signer createtree start-rekor-server test-rekor-server create-rekor-image rekor-cli-test-image
 
 .PHONY: ##post-deploy-tests
 post-deploy-tests: test-cosign test-rekor
@@ -90,6 +90,10 @@ create-rekor-image:
 .PHONY: ##start-rekor-server
 start-rekor-server:
 	bash scripts/start_rekor_server
+
+.PHONY: ##test-rekor-server
+test-rekor-server:
+	bash scripts/test_rekor_server
 
 .PHONY: ##test-cosign
 test-cosign:

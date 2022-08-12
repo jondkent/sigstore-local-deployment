@@ -1,5 +1,12 @@
 #!/bin/bash
 
+[ -x $(which registry) ] || { echo "No registry binary available"; exit 1; }
+
 echo "Start Registry server"
 
-setsid nohup registry | systemd-cat --identifier=oci-registry &
+if [ $(uname -s) == "Darwin" ]; then
+	setsid nohup registry &
+else
+	setsid nohup registry | systemd-cat --identifier=oci-registry &
+fi
+

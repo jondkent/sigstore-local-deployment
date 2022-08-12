@@ -2,4 +2,9 @@
 
 echo "Start Rekor server"
 
-setsid nohup rekor-server serve --trillian_log_server.port=8091 --enable_retrieve_api=false | systemd-cat --identifier=rekor-server &
+if [ $(uname -s) == "Darwin" ]; then
+	setsid nohup rekor-server serve --trillian_log_server.port=8091 --enable_retrieve_api=false
+else
+	setsid nohup rekor-server serve --trillian_log_server.port=8091 --enable_retrieve_api=false | systemd-cat --identifier=rekor-server &
+fi
+
