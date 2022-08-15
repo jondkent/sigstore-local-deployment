@@ -1,8 +1,8 @@
 #!/bin/bash
 
 pkill rekor-server
-pkill trillian_log_signer
-pkill trillian_log_server
+pkill -f "trillian_log_signer"
+pkill -f "trillian_log_server"
 pkill registry
 
 sudo systemctl stop mariadb
