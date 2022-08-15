@@ -1,0 +1,16 @@
+#!/bin/bash
+
+pkill rekor-server
+pkill trillian_log_signer
+pkill trillian_log_server
+pkill registry
+
+sudo systemctl stop mariadb
+
+pushd /var/lib/mysql
+read -p "in $(pwd), delete mariadb database? (y|n): " reply
+if [ ${reply} = "y" ]; then
+	sudo rm -rf *
+fi
+popd
+
