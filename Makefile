@@ -16,19 +16,20 @@ help: ##help
 	@echo "To stop all processes and, optionally clear Mariadb, run make cleanup"
 
 .PHONY: ##quickstart
-quickstart: registry create-cosign-sig clone-rekor start-mariadb secure-mariadb create-db-tables trillian-log-server trillian-log-signer createtree start-rekor-server test-rekor-server create-rekor-image rekor-cli-test-image
+quickstart: registry clone-rekor test-registry create-cosign-sig test-cosign start-mariadb secure-mariadb create-db-tables trillian-log-server trillian-log-signer createtree start-rekor-server test-rekor-server create-rekor-image rekor-cli-test-image
 
 .PHONY: ##post-deploy-tests
 post-deploy-tests: test-cosign test-rekor
 
 .PHONY: ##cleanup
-cleanup: bash scripts/stop-cleanup
+cleanup:
+	bash scripts/stop-cleanup
 
-,PHONY: ##install-packages-linux
+.PHONY: ##install-packages-linux
 install-packages-linux:
 	sudo dnf install mariadb-server git go softhsm opensc
 
-,PHONY: ##install-packages-mac
+.PHONY: ##install-packages-mac
 install-packages-mac:
 	brew install mariadb git go softhsm opensc
 
@@ -57,10 +58,6 @@ clone-rekor:
 .PHONY: ##registry
 registry:
 	bash scripts/start_registry
-
-.PHONY: ##rekor-cli-test-image
-rekor-cli-test-image:
-	bash tests/test-image-rekorcli
 
 .PHONY: ##create-cosign-sig
 create-cosign-sig:
@@ -98,6 +95,10 @@ create-rekor-image:
 .PHONY: ##start-rekor-server
 start-rekor-server:
 	bash scripts/start_rekor_server
+
+.PHONY: ##test-registry
+test_registry:
+	bash tests/test_registry
 
 .PHONY: ##test-rekor-server
 test-rekor-server:

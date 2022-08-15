@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Test Registry server"
+
+pushd $HOME/sigstore-local/src/cmd
+KO_DOCKER_REPO=localhost:1338/demo ko publish ./rekor-cli
+popd
+
