@@ -1,5 +1,5 @@
 #!/bin/bash
 
 pushd ${HOME}/sigstore-local/src/scripts
-sudo ./createdb.sh
+sudo sh -x ./createdb.sh
 popd
