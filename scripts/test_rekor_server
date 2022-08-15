@@ -2,7 +2,7 @@
 
 echo "Testing rekor is functioning correct with demo image upload"
 
-pushd ${HOME}/sigstore/src
+pushd ${HOME}/sigstore-local/src
 rekor-cli upload --artifact tests/test_file.txt --public-key tests/test_public_key.key --signature tests/test_file.sig   --rekor_server http://localhost:3000
 popd
 
