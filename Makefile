@@ -13,12 +13,16 @@ help: ##help
 	@echo "*Note* install-packages-linux target is for RHEL/Fedora only"
 	@echo "Once deployed run make post-deploy-tests to validate state"
 	@echo "Refer to journalctl for log output from targets"
+	@echo "To stop all processes and, optionally clear Mariadb, run make cleanup"
 
 .PHONY: ##quickstart
 quickstart: registry create-cosign-sig clone-rekor start-mariadb secure-mariadb create-db-tables trillian-log-server trillian-log-signer createtree start-rekor-server test-rekor-server create-rekor-image rekor-cli-test-image
 
 .PHONY: ##post-deploy-tests
 post-deploy-tests: test-cosign test-rekor
+
+.PHONY: ##cleanup
+cleanup: bash scripts/stop-cleanup
 
 ,PHONY: ##install-packages-linux
 install-packages-linux:
