@@ -2,7 +2,9 @@
 
 [ -x $(which registry) ] || { echo "No registry binary available"; exit 1; }
 
+echo; echo "#####################"
 echo "Start Registry server"
+echo "#####################"
 
 if [ $(uname -s) == "Darwin" ]; then
 	setsid nohup registry &

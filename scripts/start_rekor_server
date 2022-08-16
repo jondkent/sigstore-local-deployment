@@ -1,6 +1,8 @@
 #!/bin/bash
 
+echo; echo "##################"
 echo "Start Rekor server"
+echo "##################"
 
 if [ $(uname -s) == "Darwin" ]; then
 	setsid nohup rekor-server serve --trillian_log_server.port=8091 --enable_retrieve_api=false

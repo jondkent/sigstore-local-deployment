@@ -2,7 +2,9 @@
 
 [ -x $(which trillian_log_signer) ] || { echo "No trillian_log_signer binary available"; exit 1; }
 
+echo; echo "#########################"
 echo "Start Trillian log Signer"
+echo "#########################"
 
 if [ $(uname -s) == "Darwin" ]; then
 	setsid nohup trillian_log_signer --logtostderr --force_master --http_endpoint=localhost:8190 -rpc_endpoint=localhost:8191
@@ -10,3 +12,4 @@ else
 	setsid nohup trillian_log_signer --logtostderr --force_master --http_endpoint=localhost:8190 -rpc_endpoint=localhost:8191 | systemd-cat --identifier=trillian-log-signer &
 fi
 
+sleep 30

@@ -16,7 +16,7 @@ help: ##help
 	@echo "To stop all processes and, optionally clear Mariadb, run make cleanup"
 
 .PHONY: ##quickstart
-quickstart: registry clone-rekor test-registry create-cosign-sig test-cosign start-mariadb create-db-tables trillian-log-server trillian-log-signer createtree start-rekor-server test-rekor-server create-rekor-image rekor-cli-test-image
+quickstart: registry clone-rekor test-registry create-cosign-sig test-cosign start-mariadb create-db-tables trillian-log-server trillian-log-signer createtree start-rekor-server test-rekor-server create-rekor-image
 
 .PHONY: ##post-deploy-tests
 post-deploy-tests: test-cosign test-rekor
@@ -92,8 +92,8 @@ start-rekor-server:
 	bash scripts/start_rekor_server
 
 .PHONY: ##test-registry
-test_registry:
-	bash tests/test_registry
+test-registry:
+	bash tests/test-registry
 
 .PHONY: ##test-rekor-server
 test-rekor-server:

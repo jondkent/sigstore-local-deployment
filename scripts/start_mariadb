@@ -1,6 +1,8 @@
 #!/bin/bash
 
+echo; echo "################"
 echo "Starting MariaDB"
+echo "################"
 
 if [ $(uname -s) == "Darwin" ]; then
 	[ -x $(which mysql.server) ] || { echo "Mariadb binary not found"; exit 1; }

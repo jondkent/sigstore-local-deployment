@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "####################################################"
+echo "Shutdown all process and clear database (optionally)"
+echo "####################################################"
+
 pkill rekor-server
 pkill -f "trillian_log_signer"
 pkill -f "trillian_log_server"

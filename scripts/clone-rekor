@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo; echo "###########"
+echo "Clone rekor"
+echo "###########"
+
 if [ -d ${HOME}/sigstore-local/src ]; then 
         echo "${HOME}/sigstore-local/src exists"
         read -p "Delete existing directory? (y/n): " reply
